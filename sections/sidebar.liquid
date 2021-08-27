@@ -1,0 +1,74 @@
+<div class="sidebar-section">
+    {% for block in section.blocks %}
+     {% assign item = block.settings %}
+     {% if block.type=='image' %}
+     <div class="mb-4">
+        <h5>{{item.title}}</h5>
+        <a href="{{item.url}}">
+            <img src="{{item.image | img_url: 'master' }}" class="w-100">
+        </a>
+     </div>  
+     {% endif %}
+     <div class="mb-4">
+        <h5>{{item.desc}}</h5>
+        <p>{{item.description}}</p>
+     </div>        
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+{
+    "name" : "sidebar",
+    "blocks" : [
+{
+    "name" : "sidebar image",
+    "type" : "image",
+    "settings" : [
+    {
+        "type" : "text",
+        "id" : "title",
+        "label" : "Title",
+        "default" : "Sidebar Title"
+    },
+    {
+        "type" : "image_picker",
+        "id" : "image",
+        "label" : "Image"
+    },
+    {
+        "type" : "url",
+        "id" : "url",
+        "label" : "Link"
+    }
+    ]
+    },
+    {
+        "name" : "sidebar text",
+        "type" : "text",
+        "settings": [
+        {
+            "type" : "text",
+            "id" : "desc",
+            "label" : "Title",
+            "default" : "Sidebar Description"
+        },
+        {
+            "type" : "richtext",
+            "id" : "description",
+            "label" : "description"
+        }
+        ]
+      }
+    ]
+}
+{% endschema %}
